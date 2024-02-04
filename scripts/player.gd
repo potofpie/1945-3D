@@ -1,15 +1,18 @@
-extends KinematicBody
+extends CharacterBody3D
 
-export var max_speed = 8
-export var gravity = 70
-var velocity = Vector3.ZERO
+@export var max_speed = 8
+@export var gravity = 70
 
-onready var pivot = $plane_model
+
+@onready var pivot = $plane_model
 
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	apply_movement(input_vector)
-	velocity = move_and_slide(velocity, Vector3.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
+	velocity = velocity
 	
 	Input
 

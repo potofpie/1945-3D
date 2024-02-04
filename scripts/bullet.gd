@@ -3,7 +3,7 @@ extends Node3D
 
 const SPEED = 40.0
 
-@onready var mesh = $MeshInstance
+@onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
 
