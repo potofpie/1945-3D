@@ -16,3 +16,7 @@ mono_crash.*.json
 
 # Mac
 *.DS_Store
+
+
+build/*
+!build/start.sh
