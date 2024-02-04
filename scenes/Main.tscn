@@ -28,11 +28,17 @@ script = ExtResource("3")
 transform = Transform3D(40, 0, 0, 0, 7, 0, 0, 0, 20, 2.08165e-12, 3, 2.08165e-12)
 shape = SubResource("2")
 
-[node name="plane_model" parent="Player" instance=ExtResource("1")]
+[node name="BomberModel" parent="Player" instance=ExtResource("1")]
 transform = Transform3D(-4.06504, 0, 3.55377e-07, 0, 4, 0, -3.49691e-07, 0, -4, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 
+[node name="RCannon" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4402, 4.95469, -14.2005)
+
+[node name="LCannon" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62664, -0.966528, -6.67448)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0020611, -0.999998, -0.000174755, 0.00263613, -0.000180188, 0.999997, -0.999994, 0.00206063, 0.0026365, 3.32212, 117.976, 2.18628)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, -1.5246e-23, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 2.08165e-12, 150, 2.08165e-12)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("6")
