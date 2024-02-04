@@ -6,15 +6,13 @@ extends CharacterBody3D
 
 @onready var pivot = $plane_model
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_vector = get_input_vector()
 	apply_movement(input_vector)
 	set_velocity(velocity)
 	set_up_direction(Vector3.UP)
 	move_and_slide()
 	velocity = velocity
-	
-	Input
 
 func get_input_vector():
 	var input_vector = Vector3.ZERO
