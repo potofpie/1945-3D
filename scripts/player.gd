@@ -1,8 +1,7 @@
 extends CharacterBody3D
 
-@export var max_speed = 8
+@export var max_speed = 100
 @export var gravity = 70
-
 
 @onready var pivot = $plane_model
 
