@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvpenlsh2t5fi"]
 
-[ext_resource type="PackedScene" uid="uid://c1gg5ecv6dm0v" path="res://models/bomber/bomber.fbx" id="1"]
+[ext_resource type="PackedScene" uid="uid://bwy4alm4d5yjx" path="res://models/bomber/bomber.fbx" id="1"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3"]
 
 [sub_resource type="BoxShape3D" id="2"]

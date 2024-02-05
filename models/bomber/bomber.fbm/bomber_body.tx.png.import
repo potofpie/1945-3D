@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diqofk6x8tck4"
-path="res://.godot/imported/cockpit.tx.png-1ea89da207c7d518fef8fb7a1a925543.ctex"
+uid="uid://cdap7lrog6wys"
+path="res://.godot/imported/bomber_body.tx.png-18c599a3587d6f9052ab540b050dbc6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/bomber/cockpit.tx.png"
-dest_files=["res://.godot/imported/cockpit.tx.png-1ea89da207c7d518fef8fb7a1a925543.ctex"]
+source_file="res://models/bomber/bomber.fbm/bomber_body.tx.png"
+dest_files=["res://.godot/imported/bomber_body.tx.png-18c599a3587d6f9052ab540b050dbc6a.ctex"]
 
 [params]
 

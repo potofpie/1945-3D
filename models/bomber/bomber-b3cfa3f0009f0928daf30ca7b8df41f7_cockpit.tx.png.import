@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dox2xadkcfcjc"
-path.s3tc="res://.godot/imported/bomber-b3cfa3f0009f0928daf30ca7b8df41f7_texture6.png-cdc7d7387d068b2b40c3cbd0c18e9f40.s3tc.ctex"
+uid="uid://b36y8kusomx18"
+path.s3tc="res://.godot/imported/bomber-b3cfa3f0009f0928daf30ca7b8df41f7_cockpit.tx.png-8df8864d78ebbbbb5e2e0a2a0963974b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://models/bomber/bomber-b3cfa3f0009f0928daf30ca7b8df41f7_texture6.png"
-dest_files=["res://.godot/imported/bomber-b3cfa3f0009f0928daf30ca7b8df41f7_texture6.png-cdc7d7387d068b2b40c3cbd0c18e9f40.s3tc.ctex"]
+source_file="res://models/bomber/bomber-b3cfa3f0009f0928daf30ca7b8df41f7_cockpit.tx.png"
+dest_files=["res://.godot/imported/bomber-b3cfa3f0009f0928daf30ca7b8df41f7_cockpit.tx.png-8df8864d78ebbbbb5e2e0a2a0963974b.s3tc.ctex"]
 
 [params]
 
