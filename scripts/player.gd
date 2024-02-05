@@ -1,17 +1,19 @@
 extends CharacterBody3D
 
-
-
-@export var max_speed = 10
+@export var max_speed = 100
+@export var wind_speed = 70
 @export var gravity = 70
 
 @onready var pivot = $BomberModel
 @onready var r_cannon = $RCannon
 @onready var l_cannon = $LCannon
 
+
 # Bullets
-var bullet = load("res://scenes/bullet.tscn")
+var bullet = preload("res://scenes/bullet.tscn")
 var bulletInstance 
+var hanginDown = false 
+var hanginUp = false
 
 func shoot_bullets(_delta, cannon, key):
 	if Input.is_action_just_pressed(key):
@@ -41,15 +43,28 @@ func get_input_vector():
 	
 func apply_movement(input_vector):
 	var z_lean = pivot.get_rotation().z
-	if(velocity.x < 0 && z_lean < .5): 
-		pivot.rotate_z(-.02)
-	if(velocity.x > 0 && z_lean > -.5): 
-		pivot.rotate_z(.02)
-	velocity.x = input_vector.x * (max_speed + abs(z_lean) *300)
-	velocity.z = input_vector.z * (max_speed + abs(z_lean) * 300)
+	if(input_vector.x == 1):
+		hanginUp = false
+		hanginDown = true
+	if(input_vector.x == -1):
+		hanginUp = true
+		hanginDown = false
+	var move = (max_speed + abs(z_lean) * 5)	
+	if(hanginDown):
+		
+		if(z_lean > -.75):
+			velocity.x =  move
+			pivot.rotate_z(.03)
+	if(hanginUp):
+		if(z_lean < .75):
+			velocity.x =  -move
+			pivot.rotate_z(-.03)
+	if(input_vector.z <= 0):  # if no forward input move backwardsa
+		velocity.z = -1 * (wind_speed + abs(z_lean * 10) * 10)
+	else: 
+		velocity.z = input_vector.z * (max_speed + abs(10) * 10) # if input use speed
 
-	#if input_vector != Vector3.ZERO:
-	#	pivot.look_at(translation, Vector3.UP)
+
 
 	
 # keep for death state
