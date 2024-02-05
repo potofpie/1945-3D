@@ -15,7 +15,7 @@ var bulletInstance
 
 func shoot_bullets(_delta, cannon, key):
 	if Input.is_action_just_pressed(key):
-		var bulletInstance = bullet.instantiate()
+		bulletInstance = bullet.instantiate()
 		bulletInstance.position = cannon.global_position
 		bulletInstance.transform.basis = cannon.transform.basis
 		get_parent().add_child(bulletInstance)
