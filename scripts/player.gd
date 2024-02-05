@@ -7,11 +7,17 @@ extends CharacterBody3D
 @onready var pivot = $BomberModel
 @onready var r_cannon = $RCannon
 @onready var l_cannon = $LCannon
+@onready var island_spawn_point = $"../island_spawn_point"
+
 
 
 # Bullets
 var bullet = preload("res://scenes/bullet.tscn")
 var bulletInstance 
+
+var island = preload("res://scenes/island.tscn")
+var islandInstance 
+
 var hanginDown = false 
 var hanginUp = false
 
@@ -21,6 +27,16 @@ func shoot_bullets(_delta, cannon, key):
 		bulletInstance.position = cannon.global_position
 		bulletInstance.transform.basis = cannon.transform.basis
 		get_parent().add_child(bulletInstance)
+
+var rng = RandomNumberGenerator.new()
+
+func _on_timer_timeout():
+	print("test")
+	islandInstance = island.instantiate()
+	islandInstance.position = island_spawn_point.global_position
+	islandInstance.position.x = rng.randf_range(-10.0, 10.0) * 10
+	islandInstance.transform.basis = island_spawn_point.transform.basis
+	get_parent().add_child(islandInstance)
 
 
 
@@ -64,9 +80,6 @@ func apply_movement(input_vector):
 	else: 
 		velocity.z = input_vector.z * (max_speed + abs(10) * 10) # if input use speed
 
-
-
-	
 # keep for death state
 func apply_gravity(delta):
 	velocity.y -= gravity * delta
