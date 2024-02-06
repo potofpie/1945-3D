@@ -65,20 +65,20 @@ func apply_movement(input_vector):
 		hanginUp = true
 		hanginDown = false
 	var move = (max_speed + abs(z_lean) * 5)
-	print(l_cannon.global_position.x)
 	if(hanginDown):
+		if(l_cannon.global_position.x > 90):
+			velocity.x = 0
+		else:
+			velocity.x = move
 		if(z_lean > -.5):
-			if(l_cannon.global_position.x > 90):
-				velocity.x = 0
-			else:
-				velocity.x = move
 			pivot.rotate_z(.03)
 	if(hanginUp):
+		if(l_cannon.global_position.x < -90):
+			velocity.x = 0
+		else:
+			velocity.x = -move
+			
 		if(z_lean < .5):
-			if(l_cannon.global_position.x < -90):
-				velocity.x = 0
-			else:
-				velocity.x = -move
 			pivot.rotate_z(-.03)
 	if(input_vector.z <= 0 && (BACKWALL < l_cannon.global_position.z)):  # if no forward input move backwardsa
 		velocity.z = -1 * (wind_speed + abs(z_lean * 10) * 10)
