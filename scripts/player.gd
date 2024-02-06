@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var island_spawn_point = $"../island_spawn_point"
 
 
-
+const BACKWALL = -160
 # Bullets
 var bullet = preload("res://scenes/bullet.tscn")
 var bulletInstance 
@@ -31,7 +31,6 @@ func shoot_bullets(_delta, cannon, key):
 var rng = RandomNumberGenerator.new()
 
 func _on_timer_timeout():
-	print("test")
 	islandInstance = island.instantiate()
 	islandInstance.position = island_spawn_point.global_position
 	islandInstance.position.x = rng.randf_range(-10.0, 10.0) * 10
@@ -65,17 +64,23 @@ func apply_movement(input_vector):
 	if(input_vector.x == -1):
 		hanginUp = true
 		hanginDown = false
-	var move = (max_speed + abs(z_lean) * 5)	
+	var move = (max_speed + abs(z_lean) * 5)
+	print(l_cannon.global_position.x)
 	if(hanginDown):
-		
-		if(z_lean > -.75):
-			velocity.x =  move
+		if(z_lean > -.5):
+			if(l_cannon.global_position.x > 90):
+				velocity.x = 0
+			else:
+				velocity.x = move
 			pivot.rotate_z(.03)
 	if(hanginUp):
-		if(z_lean < .75):
-			velocity.x =  -move
+		if(z_lean < .5):
+			if(l_cannon.global_position.x < -90):
+				velocity.x = 0
+			else:
+				velocity.x = -move
 			pivot.rotate_z(-.03)
-	if(input_vector.z <= 0):  # if no forward input move backwardsa
+	if(input_vector.z <= 0 && (BACKWALL < l_cannon.global_position.z)):  # if no forward input move backwardsa
 		velocity.z = -1 * (wind_speed + abs(z_lean * 10) * 10)
 	else: 
 		velocity.z = input_vector.z * (max_speed + abs(10) * 10) # if input use speed

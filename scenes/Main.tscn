@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvpenlsh2t5fi"]
+[gd_scene load_steps=7 format=3 uid="uid://bvpenlsh2t5fi"]
 
 [ext_resource type="PackedScene" uid="uid://bwy4alm4d5yjx" path="res://models/bomber/bomber.fbx" id="1"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3"]
-[ext_resource type="ArrayMesh" path="res://models/lava_island/island_models.obj" id="3_3jhwr"]
 
 [sub_resource type="BoxShape3D" id="2"]
 
@@ -65,7 +64,9 @@ omni_shadow_mode = 0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-9, 0, -1.35896e-06, 0, 9, 0, 1.35896e-06, 0, -9, 7.11642, -13.0788, -1.68073)
 visible = false
-mesh = ExtResource("3_3jhwr")
 skeleton = NodePath("../Player")
+
+[node name="backward_wall" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -126.21)
 
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
