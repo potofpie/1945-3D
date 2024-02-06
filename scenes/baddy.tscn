@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvsc5psm3nlii"]
+
+[ext_resource type="PackedScene" uid="uid://bwy4alm4d5yjx" path="res://models/bomber/bomber.fbx" id="1_5vb6v"]
+[ext_resource type="Script" path="res://scenes/baddy.gd" id="1_hlqgl"]
+
+[node name="baddy" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_hlqgl")
+
+[node name="placholdermodel" parent="." instance=ExtResource("1_5vb6v")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

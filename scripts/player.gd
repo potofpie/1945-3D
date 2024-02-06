@@ -18,6 +18,10 @@ var bulletInstance
 var island = preload("res://scenes/island.tscn")
 var islandInstance 
 
+var enemy = preload("res://scenes/baddy.tscn")
+var enemyInstance 
+
+
 var hanginDown = false 
 var hanginUp = false
 
@@ -36,6 +40,12 @@ func _on_timer_timeout():
 	islandInstance.position.x = rng.randf_range(-10.0, 10.0) * 10
 	islandInstance.transform.basis = island_spawn_point.transform.basis
 	get_parent().add_child(islandInstance)
+	
+	enemyInstance = enemy.instantiate()
+	enemyInstance.position = island_spawn_point.global_position
+	enemyInstance.position.x = rng.randf_range(-10.0, 10.0) * 10
+	enemyInstance.transform.basis = island_spawn_point.transform.basis
+	get_parent().add_child(enemyInstance)
 
 
 
