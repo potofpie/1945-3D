@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.2")
 
 Global="*res://scripts/global.gd"
 
+[display]
+
+window/size/viewport_width=1300
+window/size/viewport_height=800
+
 [filesystem]
 
 import/blender/enabled=false

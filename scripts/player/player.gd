@@ -13,6 +13,8 @@ extends CharacterBody3D
 @onready var lCannon = $lCannon
 @onready var bomberModel = $bomberModel
 
+
+
 # Bullets
 var bullet = preload("res://scenes/player/bullet.tscn")
 var bulletInstance 
@@ -23,7 +25,7 @@ var hanginUp = false
 
 
 
-
+		
 
 func shoot_bullets(_delta, cannon, key):
 	if Input.is_action_just_pressed(key):
@@ -83,5 +85,6 @@ func apply_movement(input_vector):
 # keep for death state
 func apply_gravity(delta):
 	velocity.y -= GRAVITY * delta
+
 
 
