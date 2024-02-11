@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvsc5psm3nlii"]
+
+[ext_resource type="Script" path="res://scripts/enemy/scout.gd" id="1_exq81"]
+[ext_resource type="PackedScene" uid="uid://nhi2xj33vk06" path="res://models/enemy/scout/model.fbx" id="2_nktac"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3rxy8"]
+size = Vector3(1.15918, 1, 1)
+
+[node name="scout" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_exq81")
+
+[node name="scoutBody" type="RigidBody3D" parent="."]
+
+[node name="model" parent="scoutBody" instance=ExtResource("2_nktac")]
+transform = Transform3D(-2.60084e-07, 3.3779e-08, -6, 0.82809, 5.94258, -2.43974e-09, 5.94258, -0.82809, -2.62257e-07, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scoutBody"]
+transform = Transform3D(15, -4.21885e-15, 4.26326e-14, -4.44089e-16, 15, -2.91691e-07, -3.6389e-32, 1.26241e-07, 15, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shape = SubResource("BoxShape3D_3rxy8")

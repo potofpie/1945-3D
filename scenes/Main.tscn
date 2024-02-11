@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvpenlsh2t5fi"]
+[gd_scene load_steps=9 format=3 uid="uid://bvpenlsh2t5fi"]
 
-[ext_resource type="PackedScene" uid="uid://bwy4alm4d5yjx" path="res://models/bomber/bomber.fbx" id="1"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3"]
-
-[sub_resource type="BoxShape3D" id="2"]
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="1_ypu7h"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_yyqbs"]
+[ext_resource type="PackedScene" uid="uid://bwy4alm4d5yjx" path="res://models/player/bomber/bomber.fbx" id="2_7x6b0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ssg7s"]
 sky_top_color = Color(0, 0, 1, 1)
@@ -18,55 +17,93 @@ background_mode = 2
 sky = SubResource("Sky_nnv80")
 ambient_light_color = Color(0, 0, 1, 1)
 
-[node name="Main" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_puib0"]
 
-[node name="island_spawn_point" type="Marker3D" parent="."]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.844, 5.409, 251.443)
+[sub_resource type="BoxShape3D" id="2"]
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.37731, 5.40916, -8.27966)
-script = ExtResource("3")
+[node name="main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00184631, 0, -0.274124)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(40, 0, 0, 0, 7, 0, 0, 0, 20, 2.08165e-12, 3, 2.08165e-12)
-shape = SubResource("2")
-
-[node name="BomberModel" parent="Player" instance=ExtResource("1")]
-transform = Transform3D(-4.06504, 0, 3.55377e-07, 0, 4, 0, -3.49691e-07, 0, -4, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-
-[node name="RCannon" type="Marker3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4402, 4.95469, -14.2005)
-
-[node name="LCannon" type="Marker3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62664, -0.966528, -6.67448)
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Player"]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
-
-[node name="Timer" type="Timer" parent="Player"]
-autostart = true
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, -1.5246e-23, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 2.08165e-12, 150, 2.08165e-12)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="worldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("6")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0611182, -0.998131, 0, 0.998131, -0.0611182, 3.90744, 90.3626, -15.8049)
+[node name="spawner" type="Node" parent="."]
+script = ExtResource("1_ypu7h")
+
+[node name="scoutTimer" type="Timer" parent="spawner"]
+autostart = true
+
+[node name="enviromentTimer" type="Timer" parent="spawner"]
+wait_time = 4.0
+autostart = true
+
+[node name="upSpawnPoint" type="Marker3D" parent="spawner"]
+transform = Transform3D(1, 0, 6.03984e-07, 0, 1, 0, -6.03984e-07, 0, 1, -194.05, 7.78976, 248.601)
+
+[node name="humanMarker" type="MeshInstance3D" parent="spawner/upSpawnPoint"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("BoxMesh_puib0")
+
+[node name="downSpawnPoint" type="Marker3D" parent="spawner"]
+transform = Transform3D(1, 0, 3.01992e-07, 0, 1, 0, -3.01992e-07, 0, 1, 186.934, 10.818, 243.83)
+
+[node name="humanMarker" type="MeshInstance3D" parent="spawner/downSpawnPoint"]
+transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, 0, 0, 10, 0, 0, 7.40231)
+mesh = SubResource("BoxMesh_puib0")
+
+[node name="middleSpawnPoint" type="Marker3D" parent="spawner"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -1.84585, 5.409, 251.169)
+
+[node name="humanMarker" type="MeshInstance3D" parent="spawner/middleSpawnPoint"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("BoxMesh_puib0")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.37731, 5.40916, -158.883)
+script = ExtResource("1_yyqbs")
+
+[node name="collisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 2.08165e-12, 3, 2.08165e-12)
+shape = SubResource("2")
+
+[node name="bomberModel" parent="player" instance=ExtResource("2_7x6b0")]
+transform = Transform3D(-4.06504, 0, 6.03983e-07, 0, 4, 0, -6.13804e-07, 0, -4, 2.38419e-07, 0, -1.38992)
+
+[node name="rCannon" type="Marker3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -15)
+
+[node name="lCannon" type="Marker3D" parent="player"]
+transform = Transform3D(1, -1.05151e-09, 3.66303e-12, 1.05151e-09, 0.999976, -0.00696381, 3.6664e-12, 0.00696381, 0.999976, -5, -5, -15)
+
+[node name="camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, -1.5246e-23, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 2.08165e-12, 150, 2.08165e-12)
+
+[node name="omniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.992529, 0.122008, 0, -0.122008, -0.992529, 7.39462, 100.761, 114.235)
 light_energy = 100.0
 light_volumetric_fog_energy = 0.0
 light_size = 0.157
 light_specular = 0.938
+distance_fade_begin = 4096.0
+distance_fade_length = 4096.0
 omni_range = 4096.0
 omni_shadow_mode = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-9, 0, -1.35896e-06, 0, 9, 0, 1.35896e-06, 0, -9, 7.11642, -13.0788, -1.68073)
-visible = false
-skeleton = NodePath("../Player")
+[node name="omniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0611182, -0.998131, 0, 0.998131, -0.0611182, 3.69731, 91.2982, -149.688)
+light_energy = 100.0
+light_volumetric_fog_energy = 0.0
+light_size = 0.157
+light_specular = 0.938
+distance_fade_begin = 4096.0
+distance_fade_length = 4096.0
+omni_range = 4096.0
+omni_shadow_mode = 0
 
-[node name="backward_wall" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -126.21)
+[node name="meshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(500, 0, 0, 0, 10, 0, 0, 0, 10, -0.00186157, -3.05176e-05, -216.308)
+mesh = SubResource("BoxMesh_puib0")
+skeleton = NodePath("")
 
-[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="timeout" from="spawner/scoutTimer" to="spawner" method="_on_timer_timeout_scout"]
+[connection signal="timeout" from="spawner/enviromentTimer" to="spawner" method="_on_timer_timeout_island"]
