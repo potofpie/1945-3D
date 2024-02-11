@@ -21,6 +21,10 @@ var bulletInstance
 var hanginDown = false 
 var hanginUp = false
 
+
+
+
+
 func shoot_bullets(_delta, cannon, key):
 	if Input.is_action_just_pressed(key):
 		bulletInstance = bullet.instantiate()
@@ -79,4 +83,5 @@ func apply_movement(input_vector):
 # keep for death state
 func apply_gravity(delta):
 	velocity.y -= GRAVITY * delta
-	
+
+

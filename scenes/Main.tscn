@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvpenlsh2t5fi"]
+[gd_scene load_steps=11 format=3 uid="uid://bvpenlsh2t5fi"]
 
+[ext_resource type="FontFile" uid="uid://dcejlo3upbdvk" path="res://OperationNapalm-nRBWO.ttf" id="1_hwlu5"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="1_ypu7h"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_yyqbs"]
 [ext_resource type="PackedScene" uid="uid://bwy4alm4d5yjx" path="res://models/player/bomber/bomber.fbx" id="2_7x6b0"]
+[ext_resource type="Script" path="res://scenes/ScoreLabel.gd" id="2_bw6e4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ssg7s"]
 sky_top_color = Color(0, 0, 1, 1)
@@ -23,6 +25,24 @@ ambient_light_color = Color(0, 0, 1, 1)
 
 [node name="main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00184631, 0, -0.274124)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 321.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(1, 0.882353, 0, 1)
+theme_override_fonts/font = ExtResource("1_hwlu5")
+theme_override_font_sizes/font_size = 50
+text = "something "
+script = ExtResource("2_bw6e4")
 
 [node name="worldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("6")
